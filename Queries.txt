@@ -1,0 +1,93 @@
+select distinct commodity from output_schema.cmd_trd_dft where year = 201819 and pct_change_yr_compr=0;
+
+select sum(trd_dft_inr_cr) as trd_dft_2025 from output_schema.cmd_trd_dft where year = 202425 and pct_change_yr_compr=0 group by year, pct_change_yr_compr;
+
+select sum(exp_inr_cr) as total_exp_acrss_yr from output_schema.cmd_trd_dft where pct_change_yr_compr = 0 and hscode = 71 group by hscode;
+
+select sum(exp_inr_cr) as total_exp_acrss_yr from output_schema.cmd_trd_dft where pct_change_yr_compr = 0 and commodity='FERTILISERS.' group by commodity;
+
+select commodity, exp_inr_cr from output_schema.cmd_trd_dft where pct_change_yr_compr = 0 and year = 201920 order by exp_inr_cr desc limit 10;
+
+select commodity, imp_pct_share from output_schema.cmd_trd_dft where pct_change_yr_compr = 0 and year = 201920 and imp_pct_share>10;
+
+select commodity, trd_dft_pct_change from output_schema.cmd_trd_dft where pct_change_yr_compr = 1 and year = 201920 order by trd_dft_pct_change desc limit 1;
+
+WITH valid_growth AS (
+    SELECT
+        commodity,
+        hscode,
+        year,
+        exp_pct_change
+    FROM output_schema.cmd_trd_dft
+    where pct_change_yr_compr = 1
+)
+SELECT commodity
+FROM valid_growth
+GROUP BY hscode,commodity
+HAVING COUNT(*) = COUNT(CASE WHEN exp_pct_change > 0 THEN 1 END);
+
+SELECT commodity
+FROM (
+  SELECT
+    commodity,
+    hscode,
+    year,
+    trd_dft_inr_cr
+FROM output_schema.cmd_trd_dft
+where pct_change_yr_compr = 0
+)
+GROUP BY hscode,commodity
+HAVING COUNT(*) = COUNT(CASE WHEN trd_dft_inr_cr > 0 THEN 1 END);
+
+select commodity, year, imp_pct_change from output_schema.cmd_trd_dft where imp_pct_change > 10 and pct_change_yr_compr=5 and year = 202223;
+
+
+
+select distinct country from output_schema.cntry_trd_dft where year = 202122 and pct_change_yr_compr=0;
+
+select sum(trd_dft_inr_cr) as trd_dft_2019 from output_schema.cntry_trd_dft where year = 201819 and pct_change_yr_compr=0 group by year, pct_change_yr_compr;
+
+select sum(exp_inr_cr) as total_exp_acrss_yr from output_schema.cntry_trd_dft where pct_change_yr_compr = 0 and cntry_cd = 101 group by cntry_cd;
+
+select sum(imp_inr_cr) as total_exp_acrss_yr from output_schema.cntry_trd_dft where pct_change_yr_compr = 0 and country = 'UKRAINE' group by country;
+
+select country, exp_inr_cr from output_schema.cntry_trd_dft where pct_change_yr_compr = 0 and year = 201920 order by exp_inr_cr desc limit 10;
+
+select country, imp_pct_share from output_schema.cntry_trd_dft where pct_change_yr_compr = 0 and year = 202324 and imp_pct_share>10;
+
+SELECT country, trd_dft_pct_change
+FROM output_schema.cntry_trd_dft
+WHERE pct_change_yr_compr = 1
+  AND year = 202324
+  AND trd_dft_pct_change IS NOT NULL
+ORDER BY trd_dft_pct_change DESC
+LIMIT 1;
+
+WITH valid_growth AS (
+    SELECT
+        country,
+        cntry_cd,
+        year,
+        exp_pct_change
+    FROM output_schema.cntry_trd_dft
+    where pct_change_yr_compr = 1
+)
+SELECT country
+FROM valid_growth
+GROUP BY cntry_cd,country
+HAVING COUNT(*) = COUNT(CASE WHEN exp_pct_change > 0 THEN 1 END);
+
+SELECT country
+FROM (
+  SELECT
+    country,
+    cntry_cd,
+    year,
+    trd_dft_inr_cr
+FROM output_schema.cntry_trd_dft
+where pct_change_yr_compr = 0
+)
+GROUP BY cntry_cd,country
+HAVING COUNT(*) = COUNT(CASE WHEN trd_dft_inr_cr > 0 THEN 1 END);
+
+select country, year, imp_pct_change from output_schema.cntry_trd_dft where imp_pct_change > 10 and pct_change_yr_compr=5 and year = 202223;

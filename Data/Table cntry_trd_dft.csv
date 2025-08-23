@@ -1,0 +1,14 @@
+Name,Type,Description,Example,Nullable
+year,int,Represents the financial year for which we are generating indeed import export data. ,"201718 (April/2017 - March/2018), 201819 (April/2018 - March/2019), 201920, …….",No
+pct_change_yr_compr,int,represents how many year back the current years data is compared to.,Value between 0 - 10,No
+cntry_cd,int,Unique code assigned to every country,Value between 1 to 99,No
+country,string,Name of the country,"LIVE ANIMALS., CEREALS., FERTILISERS., ……",No
+exp_inr_cr,int,Indias export in crore in indian rupee for a particular financial year for a particular country,"288.90,221122.00,….",No
+exp_pct_change,int,"Percentage change in India’s export value for the country, compared between the current year and the year that is n years prior, where n is defined by pct_change_yr_compr","2.45,300.24,….",No
+exp_pct_share,int,Percentage export share of  that country compared to India’s total export for all the country for a particular financial year,"1,23.4,56.24,….100",No
+imp_inr_cr,int,Indias import in crore in indian rupee for a particular financial year for a particular country,"288.90,221122.00,….",No
+imp_pct_share,int,Percentage import share of  that country compared to India’s total import for all the country for a particular financial year,"2.45,300.24,….",No
+imp_pct_change,int,"Percentage change in India’s import value for the country, compared between the current year and the year that is n years prior, where n is defined by pct_change_yr_compr","1,23.4,56.24,….100",No
+trd_dft_inr_cr,int,Indias trade deficit (export-import) in crore in indian rupee for a particular financial year for a particular country,"288.90,221122.00,….",No
+trd_dft_pct_change,int,"Percentage change in India’s trade deficit (export - import) value for the country, compared between the current year and the year that is n years prior, where n is defined by pct_change_yr_compr","2.45,300.24,….",No
+trd_dft_pct_share,int,Percentage trade deficit (export-import) share of  that country compared to India’s total total trade deficit for all the country for a particular financial year,"1,23.4,56.24,….100",No

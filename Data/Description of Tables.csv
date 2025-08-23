@@ -1,0 +1,11 @@
+Table,Description,Primary_key,Schema
+cmd_trd_dft,"This dataset contains annual trade information for India, broken down by specific commodities identified using their unique HS codes. For each financial year (starting from 2017–18), the table includes:
+Export values
+Import values
+Trade difference, calculated as exports minus imports
+Additionally, the dataset provides year-over-year comparisons of these metrics, allowing analysis of how exports, imports, and trade balances have changed over time for each commodity.","year, pct_change_yr_compr, hscode",output_schema.cmd_trd_dft
+cntry_trd_dft,"This dataset contains annual trade information for India, categorized by partner countries. For each financial year (starting from 2017–18), it includes:
+Export values to each country
+Import values from each country
+Trade difference, calculated as exports minus imports
+Each country is uniquely identified, and the dataset also provides year-over-year comparisons of these metrics, enabling analysis of how India’s trade relationships with different countries have evolved over time.","year, pct_change_yr_compr, cntry_cd",output_schema.cntry_trd_dft
