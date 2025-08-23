@@ -70,6 +70,8 @@ def get_prompt(query):
 
         - When using aggregate functions, always include a GROUP BY clause.
 
+        - when user asks about trade deficit make use of column trd_dft_inr_cr
+
         - pct_change_yr_compr :
 
             1) If the query does not reference exp_pct_change, imp_pct_change, or trd_dft_pct_change → add filter: pct_change_yr_compr = 0
@@ -88,7 +90,8 @@ def get_prompt(query):
 
             2) If the year is mentioned in financial formats (e.g., 2018/19, 2019/20, financial year 18-19) → convert to 201819, 201920, etc.
 
-            3) If the year is mentioned as a single number (e.g., 2019, 2020, ......) → map it to the financial year format (201819, 201920, ......).
+            3) If the query contains a single year (e.g., 2020), generate the year code by combining the given year and the next year. For example, 2020 should become 202021 (2020 + 2021).
+            
     ---
 
     ### 🧾 Output Template (Strictly Follow This):

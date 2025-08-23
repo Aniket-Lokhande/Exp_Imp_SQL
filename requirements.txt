@@ -40,6 +40,7 @@ pydantic==2.11.7
 pydantic_core==2.33.2
 pydeck==0.9.1
 python-dateutil==2.9.0.post0
+python-dotenv==1.1.1
 pytz==2025.2
 PyYAML==6.0.2
 referencing==0.36.2
@@ -59,4 +60,7 @@ torch==2.8.0
 tornado==6.5.2
 tqdm==4.67.1
 transformers==4.55.2
-typing_extension_
+typing_extensions==4.14.1
+typing-inspection==0.4.1
+tzdata==2025.2
+urllib3==2.5.0

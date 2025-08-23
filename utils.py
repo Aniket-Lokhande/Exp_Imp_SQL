@@ -1,12 +1,23 @@
 import re
+import os
 import psycopg2
 from groq import Groq
 import pandas as pd
 from prompt import get_prompt
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("GROQ_API_KEY")
+host = os.getenv("SUPABASE_HOST")
+dbname=os.getenv("SUPABASE_DBNAME")
+user=os.getenv("SUPABASE_USER")
+password=os.getenv("SUPABASE_PASSWORD")
+port=os.getenv("SUPABASE_PORT")
+
 
 def get_sql(query: str) -> str:
 
-    client = Groq(api_key="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")
+    client = Groq(api_key=api_key)
     completion = client.chat.completions.create(
         model="deepseek-r1-distill-llama-70b",
         messages=[
@@ -30,11 +41,11 @@ def get_sql(query: str) -> str:
 def get_dataframe(sql_content):
     
     conn = psycopg2.connect(
-        host="aws-0-ap-southeast-1.pooler.supabase.com",
-        dbname="postgres",
-        user="postgres.jkofgpvpovexxdpynwia",
-        password="ShivShakti1/0",
-        port=6543
+        host=host,
+        dbname=dbname,
+        user=user,
+        password=password,
+        port=port
     )
 
     # postgresql://postgres.jkofgpvpovexxdpynwia:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
